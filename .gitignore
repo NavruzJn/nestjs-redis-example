@@ -1,0 +1,10 @@
+#ide
+.vscode
+.idea
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+src/**/*.js
+src/**/*.js.map
