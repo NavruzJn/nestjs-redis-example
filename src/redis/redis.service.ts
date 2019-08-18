@@ -11,7 +11,7 @@ export class RedisService {
   ) { }
 
   getUrl(shortenedUrl?: string): Redis.Redis {
-    if (!name) {
+    if (!shortenedUrl) {
       shortenedUrl = this.redisUrl.defaultKey;
     }
     if (!this.redisUrl.urls.has(shortenedUrl)) {

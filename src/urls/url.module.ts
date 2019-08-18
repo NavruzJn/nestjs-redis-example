@@ -7,7 +7,7 @@ import { RedisModule } from '../redis/redis.module';
 @Module({
     imports: [RedisModule.register({
         name: 'testTask',
-        url: '',
+        url: 'redis://localhost:6379',
     })],
     controllers: [UrlController],
     providers: [UrlService],

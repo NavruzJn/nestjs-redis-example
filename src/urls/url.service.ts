@@ -6,21 +6,21 @@ import { UrlModel } from './url.model';
 @Injectable()
 export class UrlService {
   private urls: UrlModel[] = [];
-  private readonly redisService: RedisService;
+
+  constructor(private readonly redisService: RedisService) {}
 
   async insertUrl(originalUrl: string) {
     const shortenedUrl = Math.random().toString();
-    const newUrl = new UrlModel(originalUrl, shortenedUrl);
     await this.redisService.createUrl(shortenedUrl, originalUrl);
     return shortenedUrl;
   }
 
-  getUrls() {
-    return this.redisService.getUrls();
+  async getUrls() {
+    return await this.redisService.getUrls();
   }
 
-  getSingleUrl(shortenedUrl: string) {
-    const originalUrl = this.findUrl(shortenedUrl);
+  async getSingleUrl(shortenedUrl: string) {
+    const originalUrl = await this.findUrl(shortenedUrl);
     return { ...originalUrl };
   }
 
